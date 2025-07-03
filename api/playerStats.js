@@ -4,8 +4,8 @@ export default async function handler(req, res) {
   try {
     const CallOfDutyAPI = new API();
 
-    const email = process.env.ACTIVISION_EMAIL;
-    const password = process.env.ACTIVISION_PASSWORD;
+    const email = ACTIVISION_EMAIL;
+    const password = ACTIVISION_PASSWORD;
 
     if (!email || !password) {
       return res.status(400).json({ error: 'Missing Activision credentials in environment variables' });

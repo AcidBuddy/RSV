@@ -1,9 +1,9 @@
 {
   "name": "clantracker-api",
   "version": "1.0.0",
-  "main": "api/playerStats.js",
   "type": "module",
+  "main": "api/playerStats.js",
   "dependencies": {
-    "@callofduty/api": "^4.1.0"
+    "callofdutyapi": "github:mdlindsey/callofdutyapi"
   }
 }

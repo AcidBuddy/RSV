@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,8 +11,6 @@
     <h1>⚔️ ClanTracker</h1>
     <nav>
       <a href="#members">Members</a>
-      <a href="#stats">Stats</a>
-      <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -21,79 +18,35 @@
   <section id="members">
     <h2>Clan Members</h2>
     <div class="member-card">
-      <img src="avatar1.png" alt="Player1" />
-      <h3>PlayerOne</h3>
-      <p>Role: Sniper</p>
-    </div>
-    <!-- Add more member cards here -->
-  </section>
-
-  <section id="stats">
-    <h2>Game Stats</h2>
-    <table>
-      <tr>
-        <th>Player</th>
-        <th>K/D Ratio</th>
-        <th>Win Rate</th>
-      </tr>
-      <tr>
-        <td>PlayerOne</td>
-        <td>1.56</td>
-        <td>72%</td>
-      </tr>
-      <!-- Add more rows as needed -->
-    </table>
-  </section>
-
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <p>Screenshots and highlights coming soon!</p>
-  </section>
-
-  <section id="contact">
-    <h2>Contact / Join Us</h2>
-    <form>
-      <input type="text" placeholder="Your Gamer Tag" required />
-      <input type="email" placeholder="Email" required />
-      <textarea placeholder="Why you want to join?" required></textarea>
-      <button type="submit">Apply</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 ClanTracker. Game hard, win harder.</p>
-  </footer>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ClanTracker</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header><h1>⚔️ ClanTracker</h1></header>
-  <section id="members">
-    <div class="member-card">
-      <img src="assets/acidbuddy.png" alt="AcidBuddy" />
+      <img src="https://via.placeholder.com/100x100.png?text=💀" alt="AcidBuddy Avatar" />
       <h3>AcidBuddy</h3>
       <p>Role: Recon Specialist</p>
-      <p>Platform: Activision</p>
+      <p>Platform: Activision (Steam)</p>
       <p>Gamertag: AcidBuddy#2161045</p>
       <p>K/D Ratio: <span id="kdRatio">Loading...</span></p>
       <p>Wins: <span id="wins">Loading...</span></p>
       <p>Favorite Weapon: MP5</p>
     </div>
   </section>
+
+  <section id="contact">
+    <h2>Join the Clan</h2>
+    <form>
+      <input type="text" placeholder="Your Gamer Tag" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Tell us why you want to join" required></textarea>
+      <button type="submit">Apply</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ClanTracker. Built for legends. 🔥</p>
+  </footer>
+
   <script>
-    fetch('https://your-vercel-app.vercel.app/api/playerStats')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('kdRatio').innerText = data.kdRatio;
-        document.getElementById('wins').innerText = data.wins;
-      });
+    // Simulated stat loading (replace with API later)
+    document.getElementById('kdRatio').innerText = '1.89';
+    document.getElementById('wins').innerText = '740';
   </script>
 </body>
 </html>

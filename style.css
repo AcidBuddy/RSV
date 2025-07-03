@@ -1,20 +1,65 @@
 body {
-  background-color: #111;
+  background-color: #121212;
   color: #eee;
   font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #1f1f1f;
   padding: 20px;
+  text-align: center;
+}
+nav a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+section {
+  padding: 20px;
+  text-align: center;
 }
 .member-card {
-  background: #1f1f1f;
+  background: linear-gradient(135deg, #ff00cc, #3333ff);
   padding: 15px;
-  margin: 10px;
+  margin: 20px auto;
   border-radius: 10px;
-  text-align: center;
-  width: 220px;
-  display: inline-block;
+  width: 250px;
+  box-shadow: 0 0 10px #ff00cc44;
+  color: #fff;
 }
 .member-card img {
   width: 100px;
+  height: 100px;
   border-radius: 50%;
   margin-bottom: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: auto;
+}
+input, textarea {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+button {
+  padding: 10px;
+  background-color: #ff4757;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+footer {
+  background-color: #1f1f1f;
+  color: #888;
+  text-align: center;
+  padding: 10px;
 }

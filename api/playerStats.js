@@ -1,4 +1,4 @@
-import API from 'callofdutyapi';
+import API from '@callofduty/api';
 
 export default async function handler(req, res) {
   try {

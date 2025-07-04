@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const response = await fetch(url, {
       method: 'GET',
       headers: {
-        'TRN-Api-Key': 'VfaBxCxbmP9F89tHWbmlNBwLqs9pfcYcoiORZTgQzC4'
+        'TRN-Api-Key': 'fc7bd9ef-b6d7-4618-86a3-1f0a695e5a83'
       }
     });
 

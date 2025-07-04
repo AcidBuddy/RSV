@@ -3,53 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ClanTracker</title>
+  <title>RSV Clan Tracker</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<header>
-  <img src="assets/clan-logo.png" alt="Clan Logo" class="logo" />
-  <nav>
-    <a href="#members">Members</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-  <section id="members">
-    <h2>Clan Members</h2>
-    <div class="member-card">
-      <img src="https://github.com/AcidBuddy/RSV/blob/main/assets/acidbuddy.png?raw=true"/>
-      <h3>AcidBuddy</h3>
-      <p>Role: Jack of all trades</p>
-      <p>Platform: Activision (Steam)</p>
-      <p>Gamertag: AcidBuddy</p>
-      <p>K/D Ratio: <span id="kdRatio">Loading...</span></p>
-      <p>Wins: <span id="wins">Loading...</span></p>
-    <section id="contact">
-    <h2>Join the Clan</h2>
-    <form>
-      <input type="text" placeholder="Your Gamer Tag" required />
-      <input type="email" placeholder="Email" required />
-      <textarea placeholder="Tell us why you want to join" required></textarea>
-      <button type="submit">Apply</button>
-    </form>
-  </section>
+  <header>
+    <img src="assets/clan-logo.png" alt="RSV Logo" class="logo" />
+    <nav>
+      <a href="#members">Members</a>
+    </nav>
+  </header>
 
-  <footer>
-    <p>&copy; 2025 ClanTracker. Built for legends. 🔥</p>
-  </footer>
+  <main>
+    <section id="members">
+      <div class="member-card">
+        <img src="assets/acidbuddy.png" alt="AcidBuddy Avatar" class="avatar" />
+        <h3>AcidBuddy</h3>
+        <p>Role: Recon Specialist</p>
+        <p>K/D Ratio: <span id="kdRatio">Loading...</span></p>
+        <p>Wins: <span id="wins">Loading...</span></p>
+      </div>
+    </section>
+  </main>
 
   <script>
-  fetch('/api/playerStats')
-    .then(response => response.json())
-    .then(data => {
-      document.getElementById('kdRatio').innerText = data.kdRatio;
-      document.getElementById('wins').innerText = data.wins;
-    })
-    .catch(error => {
-      console.error('Error fetching player stats:', error);
-      document.getElementById('kdRatio').innerText = 'N/A';
-      document.getElementById('wins').innerText = 'N/A';
-    });
-</script>
+    fetch('/api/playerStats')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('kdRatio').innerText = data.kdRatio;
+        document.getElementById('wins').innerText = data.wins;
+      })
+      .catch(error => {
+        console.error('Error fetching stats:', error);
+        document.getElementById('kdRatio').innerText = 'N/A';
+        document.getElementById('wins').innerText = 'N/A';
+      });
+  </script>
 </body>
 </html>

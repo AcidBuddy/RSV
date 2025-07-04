@@ -50,13 +50,13 @@ section {
   text-align: center;
 }
 .weapon-img {
-  width: 120px;
-  border-radius: 8px;
+  width: 200px;
+  border-radius: 16px;
   box-shadow: 0 0 8px #00ffee88;
   transition: transform 0.3s ease;
 }
 .weapon-img:hover {
-  transform: scale(1.05);
+  transform: scale(2.0);
 }
 form {
   display: flex;

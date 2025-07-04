@@ -1,18 +1,37 @@
-import API from '@callofduty/api'
-// { xsrf, sso, atkn } are assumed to be defined already (see first example)
-const CallOfDutyAPI = new API({ xsrf, sso, atkn })
-// API.Accounts() - Get all platform profiles for this account
-const { uno, xbl, psn, battle, steam } = await API.Accounts()
-const { username } = uno // uno = activision, swap for other platforms as needed
-// API.Friends() - Get all friend profiles for this account
-const { uno, incomingInvitations, outgoingInvitations, blocked } = await API.Friends()
-// uno is an array of friend profiles
-for(const friend of uno) {
-    const { username, platform, accountId, status: { online, curentTitleId } } = friend
-    // ... do the things ...
-}
-// incomingInvitations and outgoingInvitations share the same schema as friends without currentTitleId
-for(const stans of incomingInvitations) {
-    const { username, platform, accountId, status: { online } } = friend
-    // ... do the things ...
+import API from 'callofdutyapi';
+
+export default async function handler(req, res) {
+  try {
+    const CallOfDutyAPI = new API();
+
+    const email = process.env.ACTIVISION_EMAIL;
+    const password = process.env.ACTIVISION_PASSWORD;
+
+    if (!email || !password) {
+      return res.status(400).json({
+        error: 'Missing Activision credentials in environment variables'
+      });
+    }
+
+    const { xsrf, sso, atkn } = await CallOfDutyAPI.Authorize(email, password);
+    CallOfDutyAPI.UseTokens({ xsrf, sso, atkn });
+
+    const profile = await CallOfDutyAPI.Profile(
+      { username: 'AcidBuddy#2161045', platform: 'uno' },
+      'wz',
+      'mw'
+    );
+
+    res.status(200).json({
+      kdRatio: profile?.lifetime?.kdRatio ?? 'N/A',
+      wins: profile?.lifetime?.wins ?? 'N/A'
+    });
+
+  } catch (error) {
+    console.error('API error:', error);
+    res.status(500).json({
+      error: 'Failed to fetch player stats',
+      details: error.message
+    });
+  }
 }

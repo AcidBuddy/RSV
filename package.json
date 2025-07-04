@@ -2,8 +2,5 @@
   "name": "clantracker-api",
   "version": "1.0.0",
   "type": "module",
-  "main": "api/playerStats.js",
-  "dependencies": {
-    "callofdutyapi": "github:mdlindsey/callofdutyapi"
-  }
+  "main": "api/playerStats.js"
 }

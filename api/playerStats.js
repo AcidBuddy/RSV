@@ -1,37 +1,36 @@
-import API from 'callofdutyapi';
-
 export default async function handler(req, res) {
+  const username = 'AcidBuddy%232161045'; // URL-encoded (replace # with %23)
+  const platform = 'uno'; // Change to 'xbl', 'psn', etc. if needed
+
+  const url = `https://public-api.tracker.gg/v2/call-of-duty/standard/profile/${platform}/${username}`;
+
   try {
-    const CallOfDutyAPI = new API();
-
-    const email = process.env.ACTIVISION_EMAIL;
-    const password = process.env.ACTIVISION_PASSWORD;
-
-    if (!email || !password) {
-      return res.status(400).json({
-        error: 'Missing Activision credentials in environment variables'
-      });
-    }
-
-    const { xsrf, sso, atkn } = await CallOfDutyAPI.Authorize(email, password);
-    CallOfDutyAPI.UseTokens({ xsrf, sso, atkn });
-
-    const profile = await CallOfDutyAPI.Profile(
-      { username: 'AcidBuddy#2161045', platform: 'uno' },
-      'wz',
-      'mw'
-    );
-
-    res.status(200).json({
-      kdRatio: profile?.lifetime?.kdRatio ?? 'N/A',
-      wins: profile?.lifetime?.wins ?? 'N/A'
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'TRN-Api-Key': 'fc7bd9ef-b6d7-4618-86a3-1f0a695e5a83'
+      }
     });
 
-  } catch (error) {
-    console.error('API error:', error);
+    if (!response.ok) {
+      throw new Error(`Tracker API error: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Example access – you may need to adjust path based on actual data structure
+    const lifetime = data?.data?.segments?.[0]?.stats;
+
+    res.status(200).json({
+      kdRatio: lifetime?.kdRatio?.displayValue ?? 'N/A',
+      wins: lifetime?.wins?.displayValue ?? 'N/A'
+    });
+
+  } catch (err) {
+    console.error('Error fetching Tracker stats:', err);
     res.status(500).json({
-      error: 'Failed to fetch player stats',
-      details: error.message
+      error: 'Unable to fetch player stats',
+      details: err.message
     });
   }
 }
